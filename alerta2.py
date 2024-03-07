@@ -95,7 +95,7 @@ while True:
                 tipoevento = str(source['event']['outcome'])
 
                 cadena5 = """
-🚷Alerta, SSH Desarrollo
+🚷Alerta, SSH
 Fecha: {0}
 🖥 {1}
 IP Maquina: {2}
@@ -105,7 +105,7 @@ The SSH event login has resulted in a status: {5}
 --------------------
             """.format(source['@timestamp'], nombremaquina, ipmaquina, usuario, iporigen, tipoevento)
                 cadena6 = """
-🚩🚩ROOT ALERT!!, SSH Desarrollo
+🚩🚩ROOT ALERT!!, SSH
 Fecha: {0}
 🖥 {1}
 IP Maquina: {2}
@@ -114,7 +114,7 @@ IP Origen: {4}
 The SSH event login has resulted in a status: {5}
 --------------------
             """.format(source['@timestamp'], nombremaquina, ipmaquina, usuario, iporigen, tipoevento)
-                if "Usuario: root" in cadena5:
+                if "root" in cadena5:
                     f.write(cadena6)
                 else:
                     f.write(cadena5)
@@ -131,12 +131,12 @@ The SSH event login has resulted in a status: {5}
                 if "Usuario: root" in documento:
                     requests.post(f'https://api.telegram.org/{botid}/sendVideo?chat_id=-416043971&video=https://c.tenor.com/RH0yZZhFk5IAAAAC/alert-warning.gif')
                 else:
-                    os.system("echo Enviando telegram Alerta Siem Root")
+                    pass
                 requests.post(f'https://api.telegram.org/{botid}/sendMessage',
                               data={'chat_id': f'{chatid}', 'text': documento})
                 f.close()
                 os.system("sed -i '1i Subject:SSH_SIEM_Desarrollo' resultado.txt")
-                os.system("echo Enviado correo y telegram Alerta Siem Desarrollo")
+                os.system("echo Alerts send to telegram")
             else:
                 os.system("echo No hay datos")
         f.close()
