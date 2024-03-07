@@ -124,7 +124,7 @@ The SSH event login has resulted in a status: {5}
             if comprobacion != "":
                 f.close()
                 f = open("resultado.txt", "a")
-                f.write("""https://siemdocker.mol.local/app/dashboards#/view/system-5517a150-f9ce-11e6-8115-a7c18106d86a""")
+                f.write("""URL DASHBOARD KIBANA""")
                 f.close()
                 f = open("resultado.txt", "r")
                 documento = f.read()
@@ -142,5 +142,5 @@ The SSH event login has resulted in a status: {5}
         f.close()
         time.sleep(600)
     except:
-        os.system("echo Error al conectarse con Elasticsearch")
+        os.system("echo Error while connecting Elasticsearch")
         time.sleep(100)
