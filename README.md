@@ -1,9 +1,12 @@
 Scripts to send alerts to telegram from a ELK SIEM Dockerized.
 
+#How to make a service with the scripts
 Make a service with the differents scripts in ubuntu:
+```sh
+sudo nano /etc/systemd/system/alerta2.service
+```
 
-$ sudo nano /etc/systemd/system/alerta2.service
-
+```sh
 [Unit]
 Description=Script 1 example
 After=networking.target
@@ -16,10 +19,12 @@ WorkingDirectory=/srv/scriptsalerts
 
 [Install]
 WantedBy=multi-user.target
+```
 
-
-$ sudo systemctl daemon-reload
-$ sudo systemctl start alerta2.service
-$ sudo systemctl enable alerta2.service
+```sh
+sudo systemctl daemon-reload
+sudo systemctl start alerta2.service
+sudo systemctl enable alerta2.service
+```
 
 The scripts are configurated to read the elasticsearch database (logs-*) every 10 mins. And if see some coincidences, it send a telegram message
