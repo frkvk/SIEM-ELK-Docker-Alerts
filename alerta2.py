@@ -1,3 +1,4 @@
+#Alertas de logins SSH a maquinas linux. Datos recogidos con elastic-agent
 from elasticsearch import Elasticsearch
 from elasticsearch.serializer import JSONSerializer
 from configparser import ConfigParser, ExtendedInterpolation
