@@ -1,3 +1,4 @@
+#Datos de Productos Watchguard. Alertas con intentos de logins a las webs internas y externas del mismo.
 from elasticsearch import Elasticsearch
 from elasticsearch.serializer import JSONSerializer
 from configparser import ConfigParser, ExtendedInterpolation
@@ -34,6 +35,7 @@ def readConfig():
     botid = config["Global"]["TokenBot"]
     chatid = config["Global"]["TelegramChatID"]
 
+#Query a EL
 busqueda = {"size": 40,
             "_source": ["@timestamp", "message"],
             "query": {
@@ -109,7 +111,7 @@ Alerta: {2}
                               data={'chat_id': f'{chatid}', 'text': documento})
                 f.close()
                 os.system("sed -i '1i Subject:VPN Portal Logins' brutelogin.txt")
-                os.system("echo Enviado telegram Alerta Siem Desarrollo")
+                os.system("echo Enviado telegram Alerta XX")
             else:
                 os.system("echo No hay datos")
         f.close()
