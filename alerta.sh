@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Ejemplo parecido al de python, pero recogiendo los datos por bash leyendo el log de docker y analizandolo
 echo "alerta1.service   *** iniciando ***" | systemd-cat -p info
 
 contador=1
@@ -27,7 +27,6 @@ do
         #Sentencia de memoria de las maquinas
         elif [ "$memoriamaquinas" != "" ]
         then
-                echo "Alerta Memoria Maquina"
                 curl -s -X POST $URL -d chat_id=$ID -d text="⚙ Alert %0A $Mensaje"
         #Sentencia de discos de ESXi
         elif [ "$discoesxi" != "" ]
